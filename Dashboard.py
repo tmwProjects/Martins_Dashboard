@@ -7,10 +7,11 @@ import seaborn as sns
 st.title('Martins Dashboard')
 
 uploaded_file = st.file_uploader("Wähle eine CSV- oder Excel-Datei", type=['csv', 'xlsx'])
-if uploaded_file.name.endswith('.csv'):
-    df = pd.read_csv(uploaded_file)
-elif uploaded_file.name.endswith('.xlsx'):
-    df = pd.read_excel(uploaded_file)
+if uploaded_file is not None:
+    if uploaded_file.name.endswith('.csv'):
+        df = pd.read_csv(uploaded_file)
+    elif uploaded_file.name.endswith('.xlsx'):
+        df = pd.read_excel(uploaded_file)
 
     if st.checkbox('Zeige Rohdaten'):
         st.write(df)
